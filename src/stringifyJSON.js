@@ -37,17 +37,17 @@ var stringifyJSON = function(obj) {
     var str = '';
     var i = 0;
     while (i < keys.length) {
+      var key = keys[i];
       if (key === 'functions' || key === undefined) {
         return '{}';
       } else {
-        if (index === keys.length - 1) {
-          var key = keys[i];
+        if (i === keys.length - 1) {
           str += stringifyJSON(key) + ':' + stringifyJSON(obj[key]);
         } else {
           str += stringifyJSON(key) + ':' + stringifyJSON(obj[key]) + ',';
         }
       }
-      index++;
+      i++;
     }
     return '{' + str + '}';
   }
